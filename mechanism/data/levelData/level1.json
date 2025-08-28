@@ -1,0 +1,20 @@
+{
+  "name": "level1",
+  "level": 1,
+  "author": "Ling_eryao",
+  "availableList": [1,1,1,1,1],
+  "width": 10,
+  "height": 10,
+  "mapData": [
+    "EEEEESEEEE",
+    "EEEEEBEEEE",
+    "EEEEESEEEE",
+    "EEEEEBEEEE",
+    "EEEEESBSBS",
+    "EEEEEBEEEE",
+    "EEEEESEEEE",
+    "EEEEEBEEEE",
+    "EEEEESEEEE",
+    "SSSSSSSSSS"
+  ]
+}
