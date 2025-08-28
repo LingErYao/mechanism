@@ -77,5 +77,13 @@ public class TileObj extends GameObj{
         if (MainWin.currentLevel!=this.levelID){
             LevelScene.delObjList.add(this);
         }
+        if(type == 'Y'){
+            if(LevelScene.building == true){
+                img = GameUtils.lightShallow;
+
+            }else {
+                img = GameUtils.darkShallow;
+            }
+        }
     }
 }

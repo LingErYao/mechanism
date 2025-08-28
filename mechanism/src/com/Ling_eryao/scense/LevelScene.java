@@ -15,7 +15,8 @@ import java.util.List;
 
 public class LevelScene {
     MainWin farme;
-
+    public static boolean building = false;
+    public static int buildType = 0;
     int levelID; //第几关
     //关卡宽高
     int levelWidth;
