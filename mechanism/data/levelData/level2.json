@@ -12,5 +12,7 @@
     "ESBBSE",
     "EEBBEE",
     "EEEEEE"
-  ]
+  ],
+  "power" : 5,
+  "movement": 5
 }

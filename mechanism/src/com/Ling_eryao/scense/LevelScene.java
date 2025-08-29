@@ -4,6 +4,7 @@ import com.Ling_eryao.obj.gameObj.GameObj;
 import com.Ling_eryao.obj.gameObj.TileObj;
 import com.Ling_eryao.obj.levelObj.Level;
 import com.Ling_eryao.obj.levelObj.buildMechanismButtonObj;
+import com.Ling_eryao.obj.levelObj.mechanismObj;
 import com.Ling_eryao.wins.MainWin;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -15,7 +16,7 @@ import java.util.List;
 
 public class LevelScene {
     MainWin farme;
-    public static boolean building = false;
+    public static boolean building = false; //是否正在建造
     public static int buildType = 0;
     int levelID; //第几关
     //关卡宽高
@@ -91,7 +92,6 @@ public class LevelScene {
     public LevelScene(int level, MainWin frame) {
         this.levelID = level;
         this.farme=frame;
-        //generateLevel(level);
     }
 
     public void paintScene(Graphics g) {
@@ -99,5 +99,9 @@ public class LevelScene {
         for (GameObj obj : levelObjList) {
             obj.paintSelf(g);
         }
+    }
+
+    public static void buildMech(int x,int y,int type, MainWin farme, int level){
+        levelObjList.add(new mechanismObj(x, y, type,farme,level));
     }
 }

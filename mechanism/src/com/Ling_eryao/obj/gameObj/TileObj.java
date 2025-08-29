@@ -69,6 +69,20 @@ public class TileObj extends GameObj{
                 }
             }
         });
+
+        frame.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if(LevelScene.building){
+                    if(rect.contains(e.getX(),e.getY())){
+                        if(type == 'E') { //只有空方格能建造
+                            LevelScene.buildMech(x, y, LevelScene.buildType, frame, levelID);
+                            LevelScene.building = false;
+                        }
+                    }
+                }
+            }
+        });
     }
 
     @Override

@@ -10,5 +10,7 @@ public class Level {
     public int width;
     public int height;
     public List<String> mapData;
+    public int power;
+    public int movement;
 
 }

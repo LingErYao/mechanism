@@ -26,4 +26,6 @@ public class GameUtils {
     public static Image lightShallow = getScaledImage(GameUtils.loadImg("assets/img/game/tile/LightDarkShallow.png"),35,35);
     public static Image darkShallow = getScaledImage(GameUtils.loadImg("assets/img/game/tile/darkShallow.png"),35,35);
 
+
+
 }
