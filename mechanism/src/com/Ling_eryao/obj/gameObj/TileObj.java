@@ -17,6 +17,7 @@ public class TileObj extends GameObj{
     int inX,inY;
     int mouseX,mouseY;
     boolean del = false;
+    boolean built = false; // 此格是否有机关
     //type:
     // S：起点
     //  E：空方格
@@ -63,7 +64,7 @@ public class TileObj extends GameObj{
                 mouseX = e.getX();
                 mouseY = e.getY();
                 if (type=='Y'){
-                    if(rect.contains(e.getX(),e.getY())) {
+                    if(rect.contains(e.getX(),e.getY()) && LevelScene.building) {
                         setX(outX);
                         setY(outY);
                     }else {
@@ -79,8 +80,8 @@ public class TileObj extends GameObj{
             public void mouseClicked(MouseEvent e) {
                 if(LevelScene.building){
                     if(rect.contains(mouseX,mouseY)){
-                        if(type == 'E' && !del) { //只有空方格能建造
-
+                        if(type == 'E' && !del && !built) { //只有空方格能建造
+                            built = true;
                             LevelScene.buildMech(x, y, LevelScene.buildType, frame, MainWin.currentLevel);
                             LevelScene.building = false;
                         }

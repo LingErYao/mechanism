@@ -21,7 +21,7 @@ public class LevelScene {
     int levelHeight;
     int playerOriginX,playerOriginY;
     public static List<GameObj> levelObjList = new ArrayList<>();
-    public static List<mechanismObj> mechanismObjList = new ArrayList<>();
+    public static List<MechanismObj> mechanismObjList = new ArrayList<>();
     public static List<GameObj> delObjList = new ArrayList<>();
 
     public Level getLevelData(int level){
@@ -90,7 +90,7 @@ public class LevelScene {
             buttonY += 70;
         }
 
-        levelObjList.add(new playerObj(playerOriginX,playerOriginY,farme,levelID));
+        levelObjList.add(new PlayerObj(playerOriginX,playerOriginY,farme,levelID));
 
     }
 
@@ -103,12 +103,19 @@ public class LevelScene {
         levelObjList.removeAll(delObjList);
         mechanismObjList.remove(delObjList);
         for (GameObj obj : levelObjList) {
-            obj.paintSelf(g);
+            if(obj.getClass() != PlayerObj.class)
+                obj.paintSelf(g);
+        }
+
+        for (int i = 0; i < levelObjList.size(); i++) {
+            if (levelObjList.get(i).getClass() == PlayerObj.class){
+                levelObjList.get(i).paintSelf(g);
+            }
         }
     }
 
     public static void buildMech(int x,int y,int type, MainWin farme, int level){
-        levelObjList.add(new mechanismObj(x, y, type,farme,level));
-        mechanismObjList.add(new mechanismObj(x, y, type,farme,level));
+        levelObjList.add(new MechanismObj(x, y, type,farme,level));
+        mechanismObjList.add(new MechanismObj(x, y, type,farme,level));
     }
 }

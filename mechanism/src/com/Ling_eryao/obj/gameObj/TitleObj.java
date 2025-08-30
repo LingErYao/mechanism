@@ -7,7 +7,8 @@ import java.awt.*;
 
 public class TitleObj extends GameObj {
     double tick = 0;
-    private int baseY = (int)y;
+    private int baseY = (int) y;
+
     public TitleObj(int x, int y, MainWin frame) {
         super(x, y, frame);
         this.img = GameUtils.titleImg;

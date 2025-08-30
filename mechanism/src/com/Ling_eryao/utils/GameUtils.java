@@ -17,18 +17,16 @@ public class GameUtils {
     public static Image startButtonImg_1 = getScaledImage(loadImg("assets/img/UI/button/StartButton-0.png"), (int) (164 * 0.85), (int) (88 * 0.85));
     public static Image startButtonImg_2 = getScaledImage(loadImg("assets/img/UI/button/StartButton-1.png"), (int) (164 * 0.85), (int) (88 * 0.85));
 
-    public static Image commonTileImg = getScaledImage(loadImg("assets/img/game/tile/commonTile.png"),35,35);
-    public static Image barrierTileImg = getScaledImage(loadImg("assets/img/game/tile/barrierTile.png"),35,35);
-    public static Image destTileImg = getScaledImage(loadImg("assets/img/game/tile/destTile.png"),35,35);
-    public static Image originTileImg = getScaledImage(loadImg("assets/img/game/tile/originTile.png"),35,35);
-    public static Image darkShallowImg = getScaledImage(loadImg("assets/img/game/tile/darkShallow.png"),35,35);
+    public static Image commonTileImg = getScaledImage(loadImg("assets/img/game/tile/commonTile.png"), 35, 35);
+    public static Image barrierTileImg = getScaledImage(loadImg("assets/img/game/tile/barrierTile.png"), 35, 35);
+    public static Image destTileImg = getScaledImage(loadImg("assets/img/game/tile/destTile.png"), 35, 35);
+    public static Image originTileImg = getScaledImage(loadImg("assets/img/game/tile/originTile.png"), 35, 35);
+    public static Image darkShallowImg = getScaledImage(loadImg("assets/img/game/tile/darkShallow.png"), 35, 35);
 
-    public static Image lightShallow = getScaledImage(GameUtils.loadImg("assets/img/game/tile/LightDarkShallow.png"),35,35);
-    public static Image darkShallow = getScaledImage(GameUtils.loadImg("assets/img/game/tile/darkShallow.png"),35,35);
+    public static Image lightShallow = getScaledImage(GameUtils.loadImg("assets/img/game/tile/LightDarkShallow.png"), 35, 35);
+    public static Image darkShallow = getScaledImage(GameUtils.loadImg("assets/img/game/tile/darkShallow.png"), 35, 35);
 
-    public static Image playerImg = getScaledImage(GameUtils.loadImg("assets/img/game/player/player.png"),20,20);
-
-
+    public static Image playerImg = getScaledImage(GameUtils.loadImg("assets/img/game/player/player.png"), 20, 20);
 
 
 }
