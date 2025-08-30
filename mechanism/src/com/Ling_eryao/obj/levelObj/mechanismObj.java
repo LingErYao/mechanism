@@ -23,5 +23,8 @@ public class mechanismObj extends GameObj {
     @Override
     public void paintSelf(Graphics g) {
         super.paintSelf(g);
+        if (MainWin.currentLevel != this.level) {
+            LevelScene.delObjList.add(this);
+        }
     }
 }

@@ -15,6 +15,8 @@ public class TileObj extends GameObj{
     int outX = 9999;
     int outY = 9999;
     int inX,inY;
+    int mouseX,mouseY;
+    boolean del = false;
     //type:
     // S：起点
     //  E：空方格
@@ -58,6 +60,8 @@ public class TileObj extends GameObj{
         frame.addMouseMotionListener(new MouseAdapter() {
             @Override
             public void mouseMoved(MouseEvent e) {
+                mouseX = e.getX();
+                mouseY = e.getY();
                 if (type=='Y'){
                     if(rect.contains(e.getX(),e.getY())) {
                         setX(outX);
@@ -74,9 +78,10 @@ public class TileObj extends GameObj{
             @Override
             public void mouseClicked(MouseEvent e) {
                 if(LevelScene.building){
-                    if(rect.contains(e.getX(),e.getY())){
-                        if(type == 'E') { //只有空方格能建造
-                            LevelScene.buildMech(x, y, LevelScene.buildType, frame, levelID);
+                    if(rect.contains(mouseX,mouseY)){
+                        if(type == 'E' && !del) { //只有空方格能建造
+
+                            LevelScene.buildMech(x, y, LevelScene.buildType, frame, MainWin.currentLevel);
                             LevelScene.building = false;
                         }
                     }
@@ -89,6 +94,7 @@ public class TileObj extends GameObj{
     public void paintSelf(Graphics g) {
         super.paintSelf(g);
         if (MainWin.currentLevel!=this.levelID){
+            del = true;
             LevelScene.delObjList.add(this);
         }
         if(type == 'Y'){

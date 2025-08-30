@@ -50,7 +50,7 @@ public class LevelScene {
 //        System.out.println(levelObj.availableList);
 //        System.out.println(levelObj.width);
 //        System.out.println(levelObj.height);
-        System.out.println(levelObj.mapData.get(0).charAt(1));
+        //System.out.println(levelObj.mapData.get(0).charAt(1));
         levelWidth = levelObj.width;
         levelHeight = levelObj.height;
         int blockX,blockY;//生成的tile的坐标
