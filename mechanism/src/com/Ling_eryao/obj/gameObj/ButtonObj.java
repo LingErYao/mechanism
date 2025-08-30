@@ -39,7 +39,7 @@ public class ButtonObj extends GameObj {
 //                if (rect.contains(mouseX, mouseY)) {
 //                    System.out.println("按钮被点击了");
 //                }
-                if(name=="StartGameButton"){
+                if(name=="StartGameButton" && rect.contains(mouseX,mouseY)){
                     MainWin.gameState = 3;
                 }
             }

@@ -1,5 +1,6 @@
-package com.Ling_eryao.obj.gameObj;
+package com.Ling_eryao.obj.levelObj;
 
+import com.Ling_eryao.obj.gameObj.GameObj;
 import com.Ling_eryao.scense.LevelScene;
 import com.Ling_eryao.utils.GameUtils;
 import com.Ling_eryao.wins.MainWin;
@@ -10,7 +11,7 @@ public class MechanismObj extends GameObj {
     int type = -1;
     MainWin frame;
     int level;
-    public MechanismObj(int x, int y, int type, MainWin frame,int level) {
+    public MechanismObj(int x, int y, int type, MainWin frame, int level) {
         super(x, y);
         this.type = type;
         this.frame = frame;

@@ -16,10 +16,13 @@ public class LevelScene {
     public static boolean building = false; //是否正在建造
     public static int buildType = 0;
     int levelID; //第几关
+    public static int xIndex = 0;
+    public static int yIndex = 0;
+    // ↑以格为单位的玩家初始坐标
     //关卡宽高
-    int levelWidth;
-    int levelHeight;
-    int playerOriginX,playerOriginY;
+    public static int levelWidth;
+    public static int levelHeight;
+    public static int playerOriginX,playerOriginY;
     public static List<GameObj> levelObjList = new ArrayList<>();
     public static List<MechanismObj> mechanismObjList = new ArrayList<>();
     public static List<GameObj> delObjList = new ArrayList<>();
@@ -64,6 +67,8 @@ public class LevelScene {
                 if(levelObj.mapData.get(i).charAt(j) == 'S'){
                     playerOriginX = blockX + 8;
                     playerOriginY = blockY + 8;
+                    xIndex = j;
+                    yIndex = i;
                 }
                 blockX += 35;
             }
@@ -90,7 +95,7 @@ public class LevelScene {
             buttonY += 70;
         }
 
-        levelObjList.add(new PlayerObj(playerOriginX,playerOriginY,farme,levelID));
+        levelObjList.add(new PlayerObj(playerOriginX,playerOriginY,farme,levelID,xIndex,yIndex));
 
     }
 
