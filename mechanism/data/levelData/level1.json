@@ -3,19 +3,13 @@
   "level": 1,
   "author": "Ling_eryao",
   "availableList": [1,2],
-  "width": 10,
-  "height": 10,
+  "width": 4,
+  "height": 4,
   "mapData": [
-    "EEEEESEEEE",
-    "EEEEEBEEEE",
-    "EEEEESEEEE",
-    "EEEEEBEEEE",
-    "EEEEESBSBS",
-    "EEEEEBEEEE",
-    "EEEEESEEEE",
-    "EEEEEBEEEE",
-    "EEEEESEEEE",
-    "SSSSSSSSSS"
+    "EEDE",
+    "EEEE",
+    "EEEE",
+    "ESEE"
   ],
   "power" : 5,
   "movement": 5

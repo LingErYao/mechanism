@@ -1,10 +1,7 @@
 package com.Ling_eryao.scense;
 
-import com.Ling_eryao.obj.gameObj.GameObj;
-import com.Ling_eryao.obj.gameObj.TileObj;
+import com.Ling_eryao.obj.gameObj.*;
 import com.Ling_eryao.obj.levelObj.Level;
-import com.Ling_eryao.obj.levelObj.buildMechanismButtonObj;
-import com.Ling_eryao.obj.levelObj.mechanismObj;
 import com.Ling_eryao.wins.MainWin;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -22,7 +19,9 @@ public class LevelScene {
     //关卡宽高
     int levelWidth;
     int levelHeight;
+    int playerOriginX,playerOriginY;
     public static List<GameObj> levelObjList = new ArrayList<>();
+    public static List<mechanismObj> mechanismObjList = new ArrayList<>();
     public static List<GameObj> delObjList = new ArrayList<>();
 
     public Level getLevelData(int level){
@@ -40,7 +39,7 @@ public class LevelScene {
     public void setTile(int x,int y, char type,int level){
         levelObjList.add(new TileObj(x,y,farme,type,level));
     }
-    public void setBuildButton(int x, int y,int mechID,int level,MainWin farme){levelObjList.add(new buildMechanismButtonObj(x,y,mechID,level,farme));}
+    public void setBuildButton(int x, int y,int mechID,int level,MainWin farme){levelObjList.add(new BuildMechanismButtonObj(x,y,mechID,level,farme));}
     public void generateLevel(int levelID){
         //生成关卡
         Level levelObj = getLevelData(levelID);
@@ -62,6 +61,10 @@ public class LevelScene {
         for (int i = 0; i < levelWidth; i++) {
             for (int j = 0; j < levelHeight; j++) {
                 setTile(blockX,blockY,levelObj.mapData.get(i).charAt(j),levelID);
+                if(levelObj.mapData.get(i).charAt(j) == 'S'){
+                    playerOriginX = blockX + 8;
+                    playerOriginY = blockY + 8;
+                }
                 blockX += 35;
             }
             blockY += 35;
@@ -87,6 +90,8 @@ public class LevelScene {
             buttonY += 70;
         }
 
+        levelObjList.add(new playerObj(playerOriginX,playerOriginY,farme,levelID));
+
     }
 
     public LevelScene(int level, MainWin frame) {
@@ -96,6 +101,7 @@ public class LevelScene {
 
     public void paintScene(Graphics g) {
         levelObjList.removeAll(delObjList);
+        mechanismObjList.remove(delObjList);
         for (GameObj obj : levelObjList) {
             obj.paintSelf(g);
         }
@@ -103,5 +109,6 @@ public class LevelScene {
 
     public static void buildMech(int x,int y,int type, MainWin farme, int level){
         levelObjList.add(new mechanismObj(x, y, type,farme,level));
+        mechanismObjList.add(new mechanismObj(x, y, type,farme,level));
     }
 }

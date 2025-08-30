@@ -8,8 +8,8 @@ public class GameObj {
     Image img;
     int width;
     int height;
-    int x;
-    int y;
+    double x;
+    double y;
     MainWin frame;
 
     public GameObj(int x, int y, MainWin frame) {
@@ -51,7 +51,7 @@ public class GameObj {
         this.height = height;
     }
 
-    public int getX() {
+    public double getX() {
         return x;
     }
 
@@ -59,7 +59,7 @@ public class GameObj {
         this.x = x;
     }
 
-    public int getY() {
+    public double getY() {
         return y;
     }
 
@@ -88,7 +88,7 @@ public class GameObj {
     }
 
     public void paintSelf(Graphics g) {
-        g.drawImage(img, x, y, null);
+        g.drawImage(img, (int) x, (int) y, null);
     }
 
     public GameObj(int x, int y) {
