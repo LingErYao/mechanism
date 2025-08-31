@@ -1,8 +1,8 @@
 package com.Ling_eryao.obj.gameObj;
 
-import com.Ling_eryao.Main;
+
 import com.Ling_eryao.obj.gameObj.motionAnimationObj.MotionAnimation;
-import com.Ling_eryao.obj.levelObj.Level;
+import com.Ling_eryao.operaData.OperaData;
 import com.Ling_eryao.scense.LevelScene;
 import com.Ling_eryao.utils.GameUtils;
 import com.Ling_eryao.wins.MainWin;
@@ -111,16 +111,53 @@ public class PlayerObj extends GameObj {
             addScalAnimation(20, 0, 30, 3);
             return;
         }
-        if(LevelScene.levelObj.mapData.get(yIndex).charAt(xIndex) == 'A'){
+        if (LevelScene.levelObj.mapData.get(yIndex).charAt(xIndex) == 'A') {
             //判断是不是在虚空格子
             addScalAnimation(20, 0, 30, 3);
             return;
         }
-        if (LevelScene.levelObj.mapData.get(yIndex).charAt(xIndex) == 'B'){
+        if (LevelScene.levelObj.mapData.get(yIndex).charAt(xIndex) == 'B') {
             //判断是不是障碍
             addScalAnimation(20, 0, 30, 3); // 障碍还没有做单独动画
             return;
         }
+        if (LevelScene.levelObj.mapData.get(yIndex).charAt(xIndex) == 'D') {
+            MainWin.currentLevel++; // 进入下一关  目前无动画
+            return;
+        }
+
+        for (GameObj gameObj : LevelScene.levelObjList) {
+            if (gameObj.getClass() == TileObj.class) {
+                if (((TileObj) gameObj).yIndex == this.yIndex && ((TileObj) gameObj).xIndex == this.xIndex) {
+                    if (((TileObj) gameObj).mechType != 0) {
+                        handleMechanismAnimations(((TileObj) gameObj).mechType);
+                    } else {
+                        System.out.println("这里没有机关");
+                    }
+
+                }
+            }
+        }
+
+
+    }
+
+    public void handleMechanismAnimations(int mechType) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        OperaData operaData = null;
+        try {
+            operaData = objectMapper.readValue(new File(String.format("data/mechanismData/operaData/%d.json", mechType)), OperaData.class);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        doingAnimation = true;
+        animationType = 1;
+        animationDir = operaData.dir;
+        animationDis = operaData.dis;
+        animationDoneFrames = 0;
+        animationTotalFrames = operaData.totalFrames;
+
     }
 
     @Override

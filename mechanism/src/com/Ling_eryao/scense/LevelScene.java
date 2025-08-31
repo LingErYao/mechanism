@@ -39,8 +39,8 @@ public class LevelScene {
         return levelObj;
     }
 
-    public void setTile(int x,int y, char type,int level){
-        levelObjList.add(new TileObj(x,y,farme,type,level));
+    public void setTile(int x,int y, char type,int level,int _xIndex,int _yIndex){
+        levelObjList.add(new TileObj(x,y,farme,type,level,_xIndex,_yIndex));
     }
     public void setBuildButton(int x, int y,int mechID,int level,MainWin farme){levelObjList.add(new BuildMechanismButtonObj(x,y,mechID,level,farme));}
     public void generateLevel(int levelID){
@@ -63,7 +63,7 @@ public class LevelScene {
         //生成tile对象
         for (int i = 0; i < levelWidth; i++) {
             for (int j = 0; j < levelHeight; j++) {
-                setTile(blockX,blockY,levelObj.mapData.get(i).charAt(j),levelID);
+                setTile(blockX,blockY,levelObj.mapData.get(i).charAt(j),levelID,j,i);
                 if(levelObj.mapData.get(i).charAt(j) == 'S'){
                     playerOriginX = blockX + 8;
                     playerOriginY = blockY + 8;
@@ -81,7 +81,7 @@ public class LevelScene {
         blockY = 315 - (35*levelHeight/2);
         for (int i = 0; i < levelWidth; i++) {
             for (int j = 0; j < levelHeight; j++) {
-                setTile(blockX,blockY,'Y',levelID);
+                setTile(blockX,blockY,'Y',levelID,0,0);
                 blockX += 35;
             }
             blockY += 35;

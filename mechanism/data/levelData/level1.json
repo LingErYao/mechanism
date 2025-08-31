@@ -2,14 +2,20 @@
   "name": "level1",
   "level": 1,
   "author": "Ling_eryao",
-  "availableList": [1,2],
-  "width": 4,
-  "height": 4,
+  "availableList": [1,2,3,4,5,6,7],
+  "width": 10,
+  "height": 10,
   "mapData": [
-    "EEDE",
-    "EEEE",
-    "EEEE",
-    "ESEE"
+    "EEEEEEEEED",
+    "EEEEEEEEEE",
+    "EEEEEEEEEE",
+    "ESEEEEEEEE",
+    "EEEEEEEEEE",
+    "EEEEEEEEEE",
+    "EEEEEEEEEE",
+    "EEEEEEEEEE",
+    "EEEEEEEEEE",
+    "EEEEEEEEEE"
   ],
   "power" : 5,
   "movement": 5

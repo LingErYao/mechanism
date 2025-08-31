@@ -18,6 +18,8 @@ public class TileObj extends GameObj{
     int mouseX,mouseY;
     boolean del = false;
     boolean built = false; // 此格是否有机关
+    int xIndex,yIndex;
+    int mechType = 0;// 这个方格上的机关类型，没有机关则为0
     //type:
     // S：起点
     //  E：空方格
@@ -25,10 +27,12 @@ public class TileObj extends GameObj{
     //  D：目的地
     //  B：障碍
     // Y:阴影遮罩
-    public TileObj(int x, int y, MainWin frame, char type, int levelID) {
+    public TileObj(int x, int y, MainWin frame, char type, int levelID, int _xIndex, int _yIndex) {
         super(x, y, frame);
         inX = x;
         inY = y;
+        this.xIndex = _xIndex;
+        this.yIndex = _yIndex;
         this.type = type;
         this.levelID  = levelID;
         rect.x = x;
@@ -84,6 +88,7 @@ public class TileObj extends GameObj{
                             built = true;
                             LevelScene.buildMech(x, y, LevelScene.buildType, frame, MainWin.currentLevel);
                             LevelScene.building = false;
+                            mechType = LevelScene.buildType;
                         }
                     }
                 }

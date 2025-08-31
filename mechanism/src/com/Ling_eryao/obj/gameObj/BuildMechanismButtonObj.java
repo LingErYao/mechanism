@@ -20,7 +20,7 @@ public class BuildMechanismButtonObj extends GameObj {
 
     public BuildMechanismButtonObj(int x, int y, int mechID, int level, MainWin frame) {
         super(x, y);
-        super.setImg(GameUtils.getScaledImage(GameUtils.loadImg(String.format("assets/img/game/button/%d.png", mechID)), 65, 65));
+        super.setImg(GameUtils.getScaledImage(GameUtils.loadImg(String.format("assets/img/game/buildButton/%d.png", mechID)), 65, 65));
         this.mechID = mechID;
         this.levelID = level;
         inX = x;
