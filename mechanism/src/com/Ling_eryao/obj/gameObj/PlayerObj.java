@@ -87,30 +87,39 @@ public class PlayerObj extends GameObj {
         this.animationType = 1;
     }
 
-    public void addScalAnimation(double beforeScale, double afterScale, int totalFrames) {
+    public void addScalAnimation(double beforeScale, double afterScale, int totalFrames, int type) {
+        //动画type:
+        //1：移动动画
+        //2：玩家重生时的放大动画
+        //3：玩家掉出地图的缩小动画
+        //4：普通缩放动画（不带坐标归正）
         this.doingAnimation = true;
-        this.animationType = 3;
+        this.animationType = type;
         this.animationTotalFrames = totalFrames;
         this.animationDoneFrames = 0;
         imgH = (int) beforeScale;
         imgW = (int) beforeScale;
         beforScaleX = (int) x;
         beforScaleY = (int) y;
-        deltaScale = (afterScale - beforeScale) / (totalFrames + 5);
+        deltaScale = (afterScale - beforeScale) / (totalFrames + 3);
 
 
     }
 
     public void afterMove() {
         if (xIndex > LevelScene.levelWidth - 1 || xIndex < 0 || yIndex > LevelScene.levelHeight - 1 || yIndex < 0) {
-            // 出界判定
-//            x = LevelScene.playerOriginX;
-//            y = LevelScene.playerOriginY;
-//            xIndex = LevelScene.xIndex;
-//            yIndex = LevelScene.yIndex;
-            addScalAnimation(20, 0, 40);
-            //System.out.println("scale");
-
+            addScalAnimation(20, 0, 30, 3);
+            return;
+        }
+        if(LevelScene.levelObj.mapData.get(yIndex).charAt(xIndex) == 'A'){
+            //判断是不是在虚空格子
+            addScalAnimation(20, 0, 30, 3);
+            return;
+        }
+        if (LevelScene.levelObj.mapData.get(yIndex).charAt(xIndex) == 'B'){
+            //判断是不是障碍
+            addScalAnimation(20, 0, 30, 3); // 障碍还没有做单独动画
+            return;
         }
     }
 
@@ -141,7 +150,7 @@ public class PlayerObj extends GameObj {
                                 this.x += (double) (blockSize * animationDis) / animationTotalFrames;
                             }
                         }
-                        if (animationType == 2 || animationType == 3)  {
+                        if (animationType == 2 || animationType == 3 || animationType == 4) {
                             //System.out.println(imgH);
                             setImg(GameUtils.getScaledImage(GameUtils.playerImg, (int) imgW, (int) imgH));
                             super.paintSelf(g);
@@ -153,6 +162,7 @@ public class PlayerObj extends GameObj {
                         }
                         animationDoneFrames++;
                     } else {
+                        // 动画结束后的判定↓
                         if (animationType == 1) {
                             if (animationDir == 1) {
                                 yIndex -= animationDis;
@@ -178,6 +188,11 @@ public class PlayerObj extends GameObj {
                             y = 999;
                             delay = 80;
                             toOrigin = true;
+                        } else if (animationType == 2) {
+                            x = LevelScene.playerOriginX;
+                            y = LevelScene.playerOriginY;
+                            img = GameUtils.playerImg;
+                            animationType = 0;
                         } else {
                             animationType = 0;
                         }
@@ -192,10 +207,10 @@ public class PlayerObj extends GameObj {
                         toOrigin = false;
                         x = LevelScene.playerOriginX;
                         y = LevelScene.playerOriginY;
-                        img = GameUtils.playerImg;
+                        setImg(GameUtils.getScaledImage(GameUtils.playerImg, 1, 1));
                         xIndex = LevelScene.xIndex;
                         yIndex = LevelScene.yIndex;
-                        System.out.println("re");
+                        addScalAnimation(1, 20, 8, 2);
                     }
                 }
             }

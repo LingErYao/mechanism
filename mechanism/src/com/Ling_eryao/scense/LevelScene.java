@@ -26,7 +26,7 @@ public class LevelScene {
     public static List<GameObj> levelObjList = new ArrayList<>();
     public static List<MechanismObj> mechanismObjList = new ArrayList<>();
     public static List<GameObj> delObjList = new ArrayList<>();
-
+    public static Level levelObj;
     public Level getLevelData(int level){
         ObjectMapper objectMapper = new ObjectMapper();
         Level levelObj = null;
@@ -45,7 +45,7 @@ public class LevelScene {
     public void setBuildButton(int x, int y,int mechID,int level,MainWin farme){levelObjList.add(new BuildMechanismButtonObj(x,y,mechID,level,farme));}
     public void generateLevel(int levelID){
         //生成关卡
-        Level levelObj = getLevelData(levelID);
+          levelObj = getLevelData(levelID);
 //        System.out.println(levelObj.name);
 //        System.out.println(levelObj.levelObj);
 //        System.out.println(levelObj.author);
