@@ -1,0 +1,13 @@
+{
+  "name": "level1",
+  "level": 1,
+  "author": "Ling_eryao",
+  "availableList": [1],
+  "width": 1,
+  "height": 3,
+  "mapData": [
+    "SED"
+  ],
+  "power" : 5,
+  "movement": 5
+}
